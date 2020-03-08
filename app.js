@@ -12,15 +12,58 @@ const render = require("./lib/htmlRenderer");
 
 
 // Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
 
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
+const managerQuestions = () => {
+    inquirer.prompt([
+        {
+            type: 'input',
+            message: 'What is the managers name?',
+            name: 'managerName'
+        },
+        {
+            type: 'input',
+            message: 'What is the managers id?',
+            name: 'id',
+        },
+        {
+            type: 'input',
+            message: 'What is the managers email?',
+            name: 'email',
+        },
+        {
+            type: 'input',
+            message: 'What is the managers office number?',
+            name: 'officeNumber',
+        },
 
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
+    ])
+        .then(answers => {
+            console.log(answers.managerName);
+
+            // and to create objects for each team member (using the correct classes as blueprints!)
+            const manager = new Manager(answers.managerName, answers.id, answers.email, answers.officeNumber);
+            console.log(manager);
+
+            // After the user has input all employees desired, call the `render` function (required
+            // above) and pass in an array containing all employee objects; the `render` function will
+            // generate and return a block of HTML including templated divs for each employee!
+            let employeeArr = [manager]
+            console.log(employeeArr);
+            let data = render(employeeArr);
+            console.log(data);
+
+            // After you have your html, you're now ready to create an HTML file using the HTML
+            // returned from the `render` function. Now write it to a file named `team.html` in the
+            // `output` folder. You can use the variable `outputPath` above target this location.
+            fs.writeFile(outputPath, data, (err) => {
+                if (err) throw err;
+                console.log('The file has been saved!');
+            });
+        })
+}
+
+managerQuestions();
+
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
 
