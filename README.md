@@ -1,6 +1,8 @@
 
 # Team Profile Generator ![Version](https://img.shields.io/github/package-json/v/yarocruz/readme-generator)
 
+![Team Profile Generator Sample](team-profile-generator.gif)
+
 ## Description
 
 This is a Node CLI application that takes in user provided information on different employee types. Based on the information provided, the app writes the output to an HTML file. It uses the [Inquirer](https://www.npmjs.com/package/inquirer) package to prompt for questions.
