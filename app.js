@@ -13,8 +13,29 @@ const render = require("./lib/htmlRenderer");
 
 // Write code to use inquirer to gather information about the development team members,
 
+// Initial inquirer prompt to determine employee type
+
+inquirer.prompt([
+    {
+        type: 'list',
+        message: 'What type of employee?',
+        name: 'employeeType',
+        choices: [Manager, Engineer, Intern]
+    },
+])
+    .then(answer => {
+        console.log(answer);
+        if (answer.employeeType === 'Manager') {
+            managerQuestions();
+        } else {
+            console.log('Done!');
+            return;
+        }
+    })
+
 const managerQuestions = () => {
     inquirer.prompt([
+
         {
             type: 'input',
             message: 'What is the managers name?',
@@ -33,6 +54,11 @@ const managerQuestions = () => {
         {
             type: 'input',
             message: 'What is the managers office number?',
+            name: 'officeNumber',
+        },
+        {
+            type: 'confirm',
+            message: 'Do you need to enter another employee?',
             name: 'officeNumber',
         },
 
@@ -61,8 +87,6 @@ const managerQuestions = () => {
             });
         })
 }
-
-managerQuestions();
 
 // Hint: you may need to check if the `output` folder exists and create it if it
 // does not.
