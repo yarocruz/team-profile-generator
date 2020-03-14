@@ -7,14 +7,7 @@
 
 This is a Node CLI application that takes in user provided information on different employee types. Based on the information provided, the app writes the output to an HTML file. It uses the [Inquirer](https://www.npmjs.com/package/inquirer) package to prompt for questions.
 
-## Table of Contents
-
-* [Installation](#installation)
-* [Usage](#usage)
-* [Tests](#tests)
-* [License](#license)
-* [Contributing](#contributing)
-* [Questions?](#questions)
+![HTML Template Screenshot](team-profile-screenshot.png)
 
 ## Installation
 
